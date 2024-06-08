@@ -1,33 +1,31 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {LauncherStackNavigationProps} from '../../Navigation/RootNavigation';
 import {NAV_SCREEN} from '../UIConstants';
+import {DashboardStackNavigationProps} from '../../Navigation/DashboardNavigation';
 
-type Prop = LauncherStackNavigationProps<NAV_SCREEN.LOGIN_SCREEN>;
+type Prop = DashboardStackNavigationProps<NAV_SCREEN.DASHBOARD_SCREEN>;
 
-const LoginScreen = ({navigation, route}: Prop) => {
+const DashboardScreen = ({navigation, route}: Prop) => {
   return (
     <View>
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate(NAV_SCREEN.SIGNUP_SCREEN, {
-            email: 'test@test.com',
-          });
+          navigation.navigate(NAV_SCREEN.DETAIL_SCREEN);
         }}>
-        <Text>Go to Login</Text>
+        <Text>Go to Detail Screen</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default LoginScreen;
+export default DashboardScreen;
 
 const styles = StyleSheet.create({
   button: {
     margin: 10,
     padding: 22,
     alignItems: 'center',
-    backgroundColor: '#FFFF00',
+    backgroundColor: '#FF00FF',
   },
 });

@@ -1,9 +1,9 @@
 import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {NAV_SCREEN} from '../UIConstants';
-import {AppIntroStackNavigationProps} from '../../Navigation/RootNavigation';
+import {LauncherStackNavigationProps} from '../../Navigation/RootNavigation';
 
-type Prop = AppIntroStackNavigationProps<NAV_SCREEN.APP_INTRO_SCREEN_ONE>;
+type Prop = LauncherStackNavigationProps<NAV_SCREEN.APP_INTRO_SCREEN_ONE>;
 
 const AppIntroOne = ({navigation, route}: Prop) => {
   var onpress = () => {

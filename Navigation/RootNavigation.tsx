@@ -10,76 +10,66 @@ import AppIntroThree from '../screens/AppIntro/AppIntroThree';
 import {StyleSheet} from 'react-native';
 import LoginScreen from '../screens/AuthScreen/LoginScreen';
 import SignUpScreen from '../screens/AuthScreen/SignUpScreen';
+import DashboardNavigation from './DashboardNavigation';
 
-export type AppIntroStackParamList = {
+export type LauncherStackParamList = {
   [NAV_SCREEN.APP_INTRO_SCREEN_ONE]: undefined;
   [NAV_SCREEN.APP_INTRO_SCREEN_TWO]: undefined;
   [NAV_SCREEN.APP_INTRO_SCREEN_THREE]: undefined;
-};
-
-export type AppIntroStackNavigationProps<
-  T extends keyof AppIntroStackParamList,
-> = {
-  navigation: StackNavigationProp<AppIntroStackParamList, T>;
-  route: RouteProp<AppIntroStackParamList, T>;
-};
-
-const IntroStack = createNativeStackNavigator<AppIntroStackParamList>();
-
-export type LoginStackParamList = {
   [NAV_SCREEN.LOGIN_SCREEN]: undefined;
   [NAV_SCREEN.SIGNUP_SCREEN]: {
     email: string;
   };
 };
 
-export type LoginStackNavigationProps<T extends keyof LoginStackParamList> = {
-  navigation: StackNavigationProp<LoginStackParamList, T>;
-  route: RouteProp<LoginStackParamList, T>;
+export type LauncherStackNavigationProps<
+  T extends keyof LauncherStackParamList,
+> = {
+  navigation: StackNavigationProp<LauncherStackParamList, T>;
+  route: RouteProp<LauncherStackParamList, T>;
 };
 
-const LoginStack = createNativeStackNavigator<LoginStackParamList>();
+const LauncherStack = createNativeStackNavigator<LauncherStackParamList>();
 
 const Navigation = () => {
   const isFirstLaunch = true;
+  const initialRouteName = isFirstLaunch
+    ? NAV_SCREEN.APP_INTRO_SCREEN_ONE
+    : NAV_SCREEN.LOGIN_SCREEN;
 
-  if (isFirstLaunch) {
+  const isLogin = true;
+  if (isLogin) {
+    return <DashboardNavigation />;
+  } else {
     return (
       <NavigationContainer>
-        <IntroStack.Navigator>
-          <IntroStack.Screen
+        <LauncherStack.Navigator initialRouteName={initialRouteName}>
+          <LauncherStack.Screen
             name={NAV_SCREEN.APP_INTRO_SCREEN_ONE}
             component={AppIntroOne}
             options={{title: 'Intro 1'}}
           />
-          <IntroStack.Screen
+          <LauncherStack.Screen
             name={NAV_SCREEN.APP_INTRO_SCREEN_TWO}
             component={AppIntroTwo}
             options={{title: 'Intro 2'}}
           />
-          <IntroStack.Screen
+          <LauncherStack.Screen
             name={NAV_SCREEN.APP_INTRO_SCREEN_THREE}
             component={AppIntroThree}
             options={{title: 'Intro 3'}}
           />
-        </IntroStack.Navigator>
-      </NavigationContainer>
-    );
-  } else {
-    return (
-      <NavigationContainer>
-        <LoginStack.Navigator>
-          <LoginStack.Screen
+          <LauncherStack.Screen
             name={NAV_SCREEN.LOGIN_SCREEN}
             component={LoginScreen}
             options={{title: 'Login'}}
           />
-          <LoginStack.Screen
+          <LauncherStack.Screen
             name={NAV_SCREEN.SIGNUP_SCREEN}
             component={SignUpScreen}
             options={{title: 'SignUp'}}
           />
-        </LoginStack.Navigator>
+        </LauncherStack.Navigator>
       </NavigationContainer>
     );
   }
