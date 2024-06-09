@@ -1,7 +1,7 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {NAV_SCREEN} from '../UIConstants';
-import {LauncherStackNavigationProps} from '../../Navigation/RootNavigation';
+import {LauncherStackNavigationProps} from '../../Navigation/AuthNavigator';
 
 type Prop = LauncherStackNavigationProps<NAV_SCREEN.APP_INTRO_SCREEN_THREE>;
 
