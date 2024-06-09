@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, useWindowDimensions} from 'react-native';
 import React from 'react';
 import {NavigationContainer, RouteProp} from '@react-navigation/native';
 import {NAV_SCREEN} from '../screens/UIConstants';
@@ -9,6 +9,9 @@ import ProfileScreen from '../screens/Dashboard/ProfileScreen';
 import SettingsScreen from '../screens/Dashboard/SettingsScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import DetailScreen from '../screens/Dashboard/DetailScreen';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import FaqScreen from '../screens/Drawer/FaqScreen';
+import ContactUsScreen from '../screens/Drawer/ContactUsScreen';
 
 export type DashboardStackParamList = {
   [NAV_SCREEN.DASHBOARD_SCREEN]: undefined;
@@ -40,7 +43,7 @@ const DashboardStackNavigator = () => {
 };
 
 export type BottomTabParamList = {
-  [NAV_SCREEN.DASHBOARD_SCREEN]: DashboardStackParamList;
+  [NAV_SCREEN.HOME_SCREEN]: DashboardStackParamList;
   [NAV_SCREEN.PROFILE_SCREEN]: undefined;
   [NAV_SCREEN.SETTINGS_SCREEN]: undefined;
 };
@@ -52,28 +55,50 @@ export type BottomTabNavigationProps<T extends keyof BottomTabParamList> = {
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
-const DashboardNavigation = () => {
+const Drawer = createDrawerNavigator();
+
+const DrawerNavigator = () => {
+  const dimensions = useWindowDimensions();
   return (
-    <NavigationContainer>
-      <BottomTab.Navigator>
-        <BottomTab.Screen
-          name={NAV_SCREEN.DASHBOARD_SCREEN}
-          component={DashboardStackNavigator}
-          options={{headerShown: false}}
-        />
-        <BottomTab.Screen
-          name={NAV_SCREEN.PROFILE_SCREEN}
-          component={ProfileScreen}
-        />
-        <BottomTab.Screen
-          name={NAV_SCREEN.SETTINGS_SCREEN}
-          component={SettingsScreen}
-        />
-      </BottomTab.Navigator>
-    </NavigationContainer>
+    <Drawer.Navigator
+      screenOptions={{
+        drawerType: dimensions.width >= 768 ? 'permanent' : 'front',
+      }}>
+      <Drawer.Screen
+        name={NAV_SCREEN.DRAWER_HOME_SCREEN}
+        component={DashboardNavigator}
+      />
+      <Drawer.Screen
+        name={NAV_SCREEN.DRAWER_FAQ_SCREEN}
+        component={FaqScreen}
+      />
+      <Drawer.Screen
+        name={NAV_SCREEN.DRAWER_CONTACT_US_SCREEN}
+        component={ContactUsScreen}
+      />
+    </Drawer.Navigator>
   );
 };
+export default DrawerNavigator;
 
-export default DashboardNavigation;
+const DashboardNavigator = () => {
+  return (
+    <BottomTab.Navigator>
+      <BottomTab.Screen
+        name={NAV_SCREEN.HOME_SCREEN}
+        component={DashboardStackNavigator}
+        options={{headerShown: false}}
+      />
+      <BottomTab.Screen
+        name={NAV_SCREEN.PROFILE_SCREEN}
+        component={ProfileScreen}
+      />
+      <BottomTab.Screen
+        name={NAV_SCREEN.SETTINGS_SCREEN}
+        component={SettingsScreen}
+      />
+    </BottomTab.Navigator>
+  );
+};
 
 const styles = StyleSheet.create({});

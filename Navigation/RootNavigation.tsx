@@ -10,7 +10,7 @@ import AppIntroThree from '../screens/AppIntro/AppIntroThree';
 import {StyleSheet} from 'react-native';
 import LoginScreen from '../screens/AuthScreen/LoginScreen';
 import SignUpScreen from '../screens/AuthScreen/SignUpScreen';
-import DashboardNavigation from './DashboardNavigation';
+import DrawerNavigator from './DashboardNavigation';
 
 export type LauncherStackParamList = {
   [NAV_SCREEN.APP_INTRO_SCREEN_ONE]: undefined;
@@ -39,7 +39,11 @@ const Navigation = () => {
 
   const isLogin = true;
   if (isLogin) {
-    return <DashboardNavigation />;
+    return (
+      <NavigationContainer>
+        <DrawerNavigator />
+      </NavigationContainer>
+    );
   } else {
     return (
       <NavigationContainer>
