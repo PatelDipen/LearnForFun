@@ -6,13 +6,15 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import DetailScreen from '../screens/Dashboard/DetailScreen';
 import ProfileScreen from '../screens/Dashboard/ProfileScreen';
 import SettingsScreen from '../screens/Dashboard/SettingsScreen';
+import TextViewScreen from '../screens/Dashboard/TextViewScreen';
+import ModalScreen from '../screens/Dashboard/ModalScreen';
 
 export type DashboardStackParamList = {
   [NAV_SCREEN.DASHBOARD_SCREEN]: undefined;
-  [NAV_SCREEN.DETAIL_SCREEN]: undefined;
+  [NAV_SCREEN.TEXTVIEW_SCREEN]: undefined;
+  [NAV_SCREEN.MODAL_SCREEN]: undefined;
 };
 
 export type DashboardStackNavigationProps<
@@ -32,8 +34,12 @@ const DashboardStackNavigator = () => {
         component={DashboardScreen}
       />
       <DashboardStack.Screen
-        name={NAV_SCREEN.DETAIL_SCREEN}
-        component={DetailScreen}
+        name={NAV_SCREEN.TEXTVIEW_SCREEN}
+        component={TextViewScreen}
+      />
+      <DashboardStack.Screen
+        name={NAV_SCREEN.MODAL_SCREEN}
+        component={ModalScreen}
       />
     </DashboardStack.Navigator>
   );
