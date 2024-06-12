@@ -1,22 +1,28 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import CounterContextProvider, {
+  useCounter,
+} from '../../ContextAPI/CounterContext';
 
 const CounterContextAPI = () => {
-  const [count, setCount] = React.useState(0);
+  return (
+    <CounterContextProvider>
+      <CounterComp />
+    </CounterContextProvider>
+  );
+};
+
+const CounterComp = () => {
+  const {increment, decrement, counter} = useCounter();
 
   return (
     <View>
-      <Text>Counter Redux</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => setCount(count + 1)}>
-        <Text>Increment</Text>
+      <Text style={styles.text}>Count: {counter.count}</Text>
+      <TouchableOpacity style={styles.button} onPress={() => increment(1)}>
+        <Text style={{color: 'white'}}>Increment</Text>
       </TouchableOpacity>
-      <Text style={styles.text}>{count}</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => setCount(count - 1)}>
-        <Text>Decrement</Text>
+      <TouchableOpacity style={styles.button} onPress={() => decrement(1)}>
+        <Text style={{color: 'white'}}>Decrement</Text>
       </TouchableOpacity>
     </View>
   );
