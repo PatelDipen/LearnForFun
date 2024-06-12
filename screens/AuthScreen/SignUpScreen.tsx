@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {LauncherStackNavigationProps} from '../../Navigation/RootNavigation';
+import {LauncherStackNavigationProps} from '../../Navigation/AuthNavigator';
 import {NAV_SCREEN} from '../UIConstants';
 
 type Prop = LauncherStackNavigationProps<NAV_SCREEN.SIGNUP_SCREEN>;

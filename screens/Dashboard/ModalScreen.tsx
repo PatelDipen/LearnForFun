@@ -1,12 +1,4 @@
-import {
-  Alert,
-  Modal,
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-} from 'react-native';
+import {Alert, Modal, Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 
 const ModalScreen = () => {

@@ -10,11 +10,17 @@ import ProfileScreen from '../screens/Dashboard/ProfileScreen';
 import SettingsScreen from '../screens/Dashboard/SettingsScreen';
 import TextViewScreen from '../screens/Dashboard/TextViewScreen';
 import ModalScreen from '../screens/Dashboard/ModalScreen';
+import CounterRedux from '../screens/Dashboard/CounterRedux';
+import CounterContextAPI from '../screens/Dashboard/CounterContextAPI';
+import CounterUseStateHook from '../screens/Dashboard/CounterUseStateHook';
 
 export type DashboardStackParamList = {
   [NAV_SCREEN.DASHBOARD_SCREEN]: undefined;
   [NAV_SCREEN.TEXTVIEW_SCREEN]: undefined;
   [NAV_SCREEN.MODAL_SCREEN]: undefined;
+  [NAV_SCREEN.COUNTER_USESTATE_SCREEN]: undefined;
+  [NAV_SCREEN.COUNTER_CONTEXT_API_SCREEN]: undefined;
+  [NAV_SCREEN.COUNTER_REDUX_SCREEN]: undefined;
 };
 
 export type DashboardStackNavigationProps<
@@ -40,6 +46,18 @@ const DashboardStackNavigator = () => {
       <DashboardStack.Screen
         name={NAV_SCREEN.MODAL_SCREEN}
         component={ModalScreen}
+      />
+      <DashboardStack.Screen
+        name={NAV_SCREEN.COUNTER_USESTATE_SCREEN}
+        component={CounterUseStateHook}
+      />
+      <DashboardStack.Screen
+        name={NAV_SCREEN.COUNTER_CONTEXT_API_SCREEN}
+        component={CounterContextAPI}
+      />
+      <DashboardStack.Screen
+        name={NAV_SCREEN.COUNTER_REDUX_SCREEN}
+        component={CounterRedux}
       />
     </DashboardStack.Navigator>
   );

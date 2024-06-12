@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {NAV_SCREEN} from '../UIConstants';
+import {FEATURE_TYPE, NAV_SCREEN} from '../UIConstants';
 import {
   DashboardStackNavigationProps,
   DashboardStackParamList,
@@ -15,7 +15,13 @@ import {StackNavigationProp} from '@react-navigation/stack';
 
 type Prop = DashboardStackNavigationProps<NAV_SCREEN.DASHBOARD_SCREEN>;
 
-const DATA = [{title: 'Text View'}, {title: 'Modal'}, {title: 'TODO'}];
+const DATA = [
+  {title: FEATURE_TYPE.FEATURE_TEXT_VIEW},
+  {title: FEATURE_TYPE.FEATURE_MODAL},
+  {title: FEATURE_TYPE.FEATURE_USE_STATE_HOOK},
+  {title: FEATURE_TYPE.FEATURE_CONTEXT_API},
+  {title: FEATURE_TYPE.FEATURE_REDUX_TOOLKIT},
+];
 
 const DashboardScreen = ({navigation, route}: Prop) => {
   return (
@@ -50,10 +56,16 @@ const Item = ({title, separators, navigation}: ItemProps) => (
   <TouchableHighlight
     key={title}
     onPress={() => {
-      if (title === 'Text View') {
+      if (title === FEATURE_TYPE.FEATURE_TEXT_VIEW) {
         navigation.navigate(NAV_SCREEN.TEXTVIEW_SCREEN);
-      } else if (title === 'Modal') {
+      } else if (title === FEATURE_TYPE.FEATURE_MODAL) {
         navigation.navigate(NAV_SCREEN.MODAL_SCREEN);
+      } else if (title === FEATURE_TYPE.FEATURE_USE_STATE_HOOK) {
+        navigation.navigate(NAV_SCREEN.COUNTER_USESTATE_SCREEN);
+      } else if (title === FEATURE_TYPE.FEATURE_CONTEXT_API) {
+        navigation.navigate(NAV_SCREEN.COUNTER_CONTEXT_API_SCREEN);
+      } else if (title === FEATURE_TYPE.FEATURE_REDUX_TOOLKIT) {
+        navigation.navigate(NAV_SCREEN.COUNTER_REDUX_SCREEN);
       }
     }}
     onShowUnderlay={separators.highlight}
@@ -78,6 +90,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   title: {
-    fontSize: 32,
+    fontSize: 22,
   },
 });
