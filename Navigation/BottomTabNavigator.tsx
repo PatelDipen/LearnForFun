@@ -13,6 +13,8 @@ import ModalScreen from '../screens/Dashboard/ModalScreen';
 import CounterRedux from '../screens/Dashboard/CounterRedux';
 import CounterContextAPI from '../screens/Dashboard/CounterContextAPI';
 import CounterUseStateHook from '../screens/Dashboard/CounterUseStateHook';
+import CounterReduxSaga from '../screens/Dashboard/CounterReduxSaga';
+import ViewPagerScreen from '../screens/Dashboard/ViewPagerScreen';
 
 export type DashboardStackParamList = {
   [NAV_SCREEN.DASHBOARD_SCREEN]: undefined;
@@ -21,6 +23,8 @@ export type DashboardStackParamList = {
   [NAV_SCREEN.COUNTER_USESTATE_SCREEN]: undefined;
   [NAV_SCREEN.COUNTER_CONTEXT_API_SCREEN]: undefined;
   [NAV_SCREEN.COUNTER_REDUX_SCREEN]: undefined;
+  [NAV_SCREEN.COUNTER_REDUX_SAGA_SCREEN]: undefined;
+  [NAV_SCREEN.VIEW_PAGER]: undefined;
 };
 
 export type DashboardStackNavigationProps<
@@ -58,6 +62,14 @@ const DashboardStackNavigator = () => {
       <DashboardStack.Screen
         name={NAV_SCREEN.COUNTER_REDUX_SCREEN}
         component={CounterRedux}
+      />
+      <DashboardStack.Screen
+        name={NAV_SCREEN.COUNTER_REDUX_SAGA_SCREEN}
+        component={CounterReduxSaga}
+      />
+      <DashboardStack.Screen
+        name={NAV_SCREEN.VIEW_PAGER}
+        component={ViewPagerScreen}
       />
     </DashboardStack.Navigator>
   );

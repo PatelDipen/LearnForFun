@@ -21,6 +21,8 @@ const DATA = [
   {title: FEATURE_TYPE.FEATURE_USE_STATE_HOOK},
   {title: FEATURE_TYPE.FEATURE_CONTEXT_API},
   {title: FEATURE_TYPE.FEATURE_REDUX_TOOLKIT},
+  {title: FEATURE_TYPE.FEATURE_REDUX_TOOLKIT_SAGA},
+  {title: FEATURE_TYPE.FEATURE_VIEW_PAGER},
 ];
 
 const DashboardScreen = ({navigation, route}: Prop) => {
@@ -66,6 +68,10 @@ const Item = ({title, separators, navigation}: ItemProps) => (
         navigation.navigate(NAV_SCREEN.COUNTER_CONTEXT_API_SCREEN);
       } else if (title === FEATURE_TYPE.FEATURE_REDUX_TOOLKIT) {
         navigation.navigate(NAV_SCREEN.COUNTER_REDUX_SCREEN);
+      } else if (title === FEATURE_TYPE.FEATURE_REDUX_TOOLKIT_SAGA) {
+        navigation.navigate(NAV_SCREEN.COUNTER_REDUX_SAGA_SCREEN);
+      } else if (title === FEATURE_TYPE.FEATURE_VIEW_PAGER) {
+        navigation.navigate(NAV_SCREEN.VIEW_PAGER);
       }
     }}
     onShowUnderlay={separators.highlight}
