@@ -1,4 +1,4 @@
-export function incrementAsyncRQ(count) {
+export function incrementAsyncRQ(count:number) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(count+1);
@@ -6,7 +6,7 @@ export function incrementAsyncRQ(count) {
     });
 }
 
-export function decrementAsyncRQ(count) {
+export function decrementAsyncRQ(count:number) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(count+1);
