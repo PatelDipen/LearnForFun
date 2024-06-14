@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {RouteProp} from '@react-navigation/native';
 import {NAV_SCREEN} from '../screens/UIConstants';
@@ -15,6 +15,8 @@ import CounterContextAPI from '../screens/Dashboard/CounterContextAPI';
 import CounterUseStateHook from '../screens/Dashboard/CounterUseStateHook';
 import CounterReduxSaga from '../screens/Dashboard/CounterReduxSaga';
 import ViewPagerScreen from '../screens/Dashboard/ViewPagerScreen';
+import ActivityScreen from '../screens/Dashboard/ActivityScreen';
+import DummyScreen from '../screens/Dashboard/DummyScreen';
 
 export type DashboardStackParamList = {
   [NAV_SCREEN.DASHBOARD_SCREEN]: undefined;
@@ -78,6 +80,9 @@ const DashboardStackNavigator = () => {
 export type BottomTabParamList = {
   [NAV_SCREEN.HOME_SCREEN]: DashboardStackParamList;
   [NAV_SCREEN.PROFILE_SCREEN]: undefined;
+  [NAV_SCREEN.ACTIVITY_SCREEN]: undefined;
+  [NAV_SCREEN.DUMMY_SCREEN]: undefined;
+  [NAV_SCREEN.SETTINGS_SCREEN]: undefined;
   [NAV_SCREEN.SETTINGS_SCREEN]: undefined;
 };
 
@@ -97,6 +102,32 @@ const BottomTabNavigator = () => {
         options={{headerShown: false}}
       />
       <BottomTab.Screen
+        name={NAV_SCREEN.ACTIVITY_SCREEN}
+        component={ActivityScreen}
+      />
+      <BottomTab.Screen
+        name={NAV_SCREEN.DUMMY_SCREEN}
+        component={DummyScreen}
+        options={{
+          tabBarButton: () => (
+            <View
+              style={{
+                position: 'relative',
+                bottom: 35,
+                alignItems: 'center',
+                justifyContent: 'space-around',
+                height: 85,
+              }}>
+              <TouchableOpacity
+                style={styles.roundButton1}
+                onPress={() => console.log('Hi')}
+              />
+              <Text>Add</Text>
+            </View>
+          ),
+        }}
+      />
+      <BottomTab.Screen
         name={NAV_SCREEN.PROFILE_SCREEN}
         component={ProfileScreen}
       />
@@ -110,4 +141,14 @@ const BottomTabNavigator = () => {
 
 export default BottomTabNavigator;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  roundButton1: {
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 100,
+    backgroundColor: 'orange',
+  },
+});
