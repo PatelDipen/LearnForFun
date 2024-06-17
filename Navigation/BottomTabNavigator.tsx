@@ -17,6 +17,7 @@ import CounterReduxSaga from '../screens/Dashboard/CounterReduxSaga';
 import ViewPagerScreen from '../screens/Dashboard/ViewPagerScreen';
 import ActivityScreen from '../screens/Dashboard/ActivityScreen';
 import DummyScreen from '../screens/Dashboard/DummyScreen';
+import FontTestScreen from '../screens/Dashboard/FontTestScreen';
 
 export type DashboardStackParamList = {
   [NAV_SCREEN.DASHBOARD_SCREEN]: undefined;
@@ -27,6 +28,7 @@ export type DashboardStackParamList = {
   [NAV_SCREEN.COUNTER_REDUX_SCREEN]: undefined;
   [NAV_SCREEN.COUNTER_REDUX_SAGA_SCREEN]: undefined;
   [NAV_SCREEN.VIEW_PAGER]: undefined;
+  [NAV_SCREEN.FONT_TEST]: undefined;
 };
 
 export type DashboardStackNavigationProps<
@@ -72,6 +74,10 @@ const DashboardStackNavigator = () => {
       <DashboardStack.Screen
         name={NAV_SCREEN.VIEW_PAGER}
         component={ViewPagerScreen}
+      />
+      <DashboardStack.Screen
+        name={NAV_SCREEN.FONT_TEST}
+        component={FontTestScreen}
       />
     </DashboardStack.Navigator>
   );
