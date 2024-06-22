@@ -13,7 +13,7 @@ const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
       screenOptions={{
-        drawerType: dimensions.width >= 768 ? 'permanent' : 'front',
+        drawerType: dimensions.width >= 768 ? 'slide' : 'front',
       }}>
       <Drawer.Screen
         name={NAV_SCREEN.DRAWER_HOME_SCREEN}
